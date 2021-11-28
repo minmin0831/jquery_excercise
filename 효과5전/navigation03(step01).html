@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<head>
+<meta charset="utf-8">
+<title>jQuery Navigation</title>
+<link rel="stylesheet" href="style.css">
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+
+</head>
+
+<body>
+<div id="menuArea">
+	<ul id="navi">
+		<li id="menu1">
+			<a href="#">회사 소개</a>
+			<ul class="sub">
+				<li><a href="#">CEO 인사말</a></li>
+				<li><a href="#">회사 소개</a></li>
+				<li><a href="#">회사 연혁</a></li>
+			</ul>
+		</li>
+		<li id="menu2">
+			<a href="#">제품 소개</a>
+			<ul class="sub">
+				<li><a href="#">냉장고</a></li>
+				<li><a href="#">세탁기</a></li>
+				<li><a href="#">인덕션</a></li>
+			</ul>
+		</li>
+		<li id="menu3">
+			<a href="#">도움</a>
+			<ul class="sub">
+				<li><a href="#">오시는 길</a></li>
+				<li><a href="#">환불 반품 정책</a></li>
+				<li><a href="#">블로그</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<script>
+	/*
+	1. 실행 하자마자 상위 메뉴만 보이도록 한다. 
+	2. 상위 메뉴를 hover하면 하위 메뉴가 보인다. 
+	*/
+
+	$('.sub').hide();
+
+	$('#navi > li').hover(function () {
+		$(this).find('.sub').stop().slideDown('normal');
+		$(this).find('a:first').addClass('on');
+	}, function () {
+		$(this).find('.sub').stop().slideUp('normal');
+		$(this).find('a:first').removeClass('on');
+	});
+
+
+	// hover했을 때 해당 태그에 on 이라는 클래스 이름을 준다. 
+
+	// $('#navi > li > a').hover(function (index) {
+	// 	$(this).next().stop().slideDown('slow');
+	// }, function () {
+	// 	$(this).next().stop().slideUp('slow');
+	// });
+</script>
+</body>
+</html>

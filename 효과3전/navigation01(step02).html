@@ -1,0 +1,136 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Navigation</title>
+<link rel="stylesheet" href="mystyle.css">
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<style>
+body {
+	margin: 20px auto;
+	padding: 0;
+	font-size: 13px;
+}
+ul#navi {
+	width: 200px;
+	text-indent: 10px;
+}
+ul#navi, ul#navi ul {
+	margin: 0; padding: 0;
+	list-style: none;
+}
+li.group {
+	margin-bottom: 3px;
+}
+div.title {
+	height: 35px;
+	line-height: 3em;
+	background: #9ab92e;
+	cursor: pointer;
+}
+ul.sub li {
+	margin-bottom: 2px;
+	height: 35px;
+	line-height: 3em;
+	background: #fdf6dd;
+	cursor: pointer;
+}
+ul.sub li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	color:#000;
+}
+ul.sub li:hover {
+	background:#cf0;
+}
+</style>
+
+
+</head>
+
+<body onload="init(0)">
+	<!-- 
+		body가 로드되면 init 이라는 함수를 호출하라는 의미. 
+		값은 0을 넣는다.
+		배열로 된 메뉴 그룹 중 인덱스로 지정된 그룹을 로딩 3초 후에 보여준다. 
+	 -->
+	<!-- 
+		1. 상위 메뉴만 보이게 한다.
+		2. 상위 메뉴를 누르면 하위 메뉴가 보이게 한다. 
+	 -->
+<ul id="navi">
+	<li class="group">
+		<div class="title">회사소개</div>
+		<ul class="sub">
+			<li><a href="#">CEO 인사말</a></li>
+			<li><a href="#">회사 소개</a></li>
+			<li><a href="#">회사 연혁</a></li>
+		</ul>
+	</li>
+	<li class="group">
+		<div class="title">제품정보</div>
+		<ul class="sub">
+			<li><a href="#">냉장고</a></li>
+			<li><a href="#">세탁기</a></li>
+			<li><a href="#">에어콘</a></li>
+		</ul>
+	</li>
+	<li class="group">
+		<div class="title">커뮤니티</div>
+		<ul class="sub">
+			<li><a href="#">블로그</a></li>
+			<li><a href="#">소셜 미디어</a></li>
+		</ul>
+	</li>
+</ul>
+
+<input id="image_upload" type="file" name="user_image" value="channelImageUpload"/>
+
+<script>
+	$('.sub').hide();
+	// var down = false;
+	// $('.title').click(function () {
+	// 	if(down) {
+	// 		$('.sub').next().slideUp('slow');
+	// 		$(this).next().slideDown('slow');
+	// 		down = true;
+	// 		console.log(down);
+	// 	} else {
+	// 		$('.sub').next().slideUp('slow');
+	// 		$(this).next().slideDown('slow');
+	// 		down = true;
+	// 		console.log(down);
+	// 	}
+	// });
+
+	var old_stat = -1;
+	var new_stat;
+	var s;
+	$('.title').click(function () {
+		clearInterval(s);
+		new_stat = $(this).parent().index();
+		if(old_stat != new_stat) {
+			//$('.sub').slideUp();
+			$(this).next().slideDown();
+			old_stat = new_stat;
+		} else {
+		}
+	});
+	
+	function init(index) {
+		s = setTimeout(function () {
+			$('#navi>li').eq(index).find('.sub').slideDown('slow');
+		}, 3000);
+	}
+
+	/*
+	한번 내린 메뉴를 다시 눌렀을 때 올라오지 않도록 하는 시나리오가 존재하기 때문에 
+	같은 메뉴를 눌러 다시 올리는 시나리오는 시나리오 충돌을 일으킨다.
+	때문에 같은 메뉴를 눌러 올리는 시나리오를 추가하려면 collapse 아이콘을 만들어 올리던지 해야한다. 
+	*/
+</script>
+
+</body>
+</html>
