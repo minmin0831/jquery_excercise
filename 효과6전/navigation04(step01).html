@@ -67,6 +67,30 @@ li {
 	</ul>
 </div>
 <script>
-	</script>
+	$('#box > ul > li').hover(function() {
+		$(this).find('.pagecurl').stop().animate({
+			left: -100,
+			top: 100
+		}, 'slow');
+	}, function () {
+		$(this).find('.pagecurl').stop().animate({
+			left: 0,
+			top: 0
+		}, 'slow');
+	});
+
+	// $('.pagecurl').hover(function() {
+	// 	$(this).animate({
+	// 		left: -100,
+	// 		bottom: -100
+	// 	});
+		
+	// }, function() {
+	// 	$(this).animate({
+	// 		left: 0,
+	// 		bottom: 0
+	// 	});
+	// })
+</script>
 </body>
 </html>

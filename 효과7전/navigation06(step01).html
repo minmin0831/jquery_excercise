@@ -55,7 +55,29 @@
 	</div>
 </div>
 <script>
-	
+	$('.depth2').hide();
+
+	$('.lnb').click(function () {
+		$('.depth2').slideUp('.fast');
+		$('a.lnb').removeClass('on');
+		$(this).next().slideDown('fast');
+		$(this).addClass('on');
+	});
+
+	// $('.depth2').hide();
+
+	// sw = false;
+	// $('.lnb').click(function () {
+	// 	if(sw) {
+	// 		$('.depth2').dnext().slideDown('slow');
+	// 		sw = false;
+	// 		console.log(sw);
+	// 	} else {
+	// 		$('.depth2').next().slideUp('slow');
+	// 		sw = true;
+	// 		console.log(sw);
+	// 	}
+	// }); 
 </script>
 </body>
 </html>
